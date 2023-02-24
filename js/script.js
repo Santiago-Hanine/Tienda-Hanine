@@ -1,4 +1,3 @@
-let dineroTotal = 0
 let productos = []
 let carrito = []
 let respuesta
@@ -53,7 +52,9 @@ function agregarCarrito(id) {
         carrito.push(resultado)
     }
 
-    resultado.cantidad++
+resultado.cantidad++
+
+
 
 
     actualizarCarrito()
@@ -73,8 +74,11 @@ function quitarCarrito(id) {
 
     const resultado = carrito.find(prod => prod.id === id)
     const indice = carrito.indexOf(resultado)
-    carrito.splice(indice, 1)
-    resultado.cantidad--
+    if (resultado.cantidad > 1) {
+        resultado.cantidad--
+    } else {
+        carrito.splice(indice, 1)
+    }
     actualizarCarrito()
     
 }
@@ -92,7 +96,7 @@ const actualizarCarrito = () => {
         <p>${prod.nombre}</p>
         <p>Precio: ${prod.precio}
         <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
-        <button class="quitarCarrito" onclick=quitarCarrito(${prod.id} )><img src="./img/eliminar.png"></button>
+        <button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
         </div>
         `
 
@@ -103,7 +107,7 @@ const actualizarCarrito = () => {
         carritoHTML.innerHTML = `<h4 class ="carritoVacio">Aun no se agrego nada!</h4>`
     }
 
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+    precioTotal.innerText = "$" + carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
 
     contadorCarrito.textContent = carrito.length
 
@@ -111,10 +115,6 @@ const actualizarCarrito = () => {
     guardarStorage()
 }
 
-function vaciarCarrito() {
-    carrito.length = []
-    actualizarCarrito()
-}
 
 function buscarProductos() {
     let input = document.getElementById('barraBusqueda').value
@@ -136,17 +136,24 @@ function guardarStorage() {
 }
 
 function renderProducts(prod) {
-    productos.forEach(prod => {
+        fetch('/data.json')
+        .then( (res) => res.json())
+        .then( (data) => {
+       
+        data.forEach((prod) => {
 
-todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
-<h3>${prod.nombre}</h3> 
-<img class="imgProductos" src="${prod.imagen}">
-<h4>$${prod.precio}</h5>
-<button class="agregarCarrito" onclick=agregarCarrito(${prod.id})>Agregar al carrito</button> 
-<button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
+            todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
+            <h3>${prod.nombre}</h3> 
+            <img class="imgProductos" src="${prod.imagen}">
+            <h4>$${prod.precio}</h5>
+            <button class="agregarCarrito" onclick=agregarCarrito(${prod.id})>Agregar al carrito</button> 
+            <button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
+            
+            </div>`
+       
+        })
+        })
 
-</div>`
-});
 }
 
 
@@ -159,7 +166,7 @@ function mostrarMensaje() {
     })
 }
 
-let myTimeout = setTimeout(mostrarMensaje, 5000);
+let myTimeout = setTimeout(mostrarMensaje, 15000);
 
 function cerrarMensaje() {
     Swal.close()
@@ -168,6 +175,6 @@ function cerrarMensaje() {
 function reiniciarContador() {
     cerrarMensaje()
     clearTimeout(myTimeout);
-    myTimeout = setTimeout(mostrarMensaje, 5000);
+    myTimeout = setTimeout(mostrarMensaje, 15000);
 }
 document.addEventListener("mousemove", reiniciarContador)
