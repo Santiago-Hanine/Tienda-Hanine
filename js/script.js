@@ -138,6 +138,7 @@ function buscarProductos() {
     }
 }
 
+
 function guardarStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito))
 }
