@@ -136,10 +136,9 @@ function guardarStorage() {
 }
 
 function renderProducts(prod) {
-        fetch('/data.json')
-        .then( (res) => res.json())
-        .then( (data) => {
-       
+        fetch('TIENDA-HANINE/data.json')
+        .then((res) => res.json())
+        .then((data) => {
         data.forEach((prod) => {
 
             todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
@@ -150,7 +149,7 @@ function renderProducts(prod) {
             <button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
             
             </div>`
-       
+
         })
         })
 
