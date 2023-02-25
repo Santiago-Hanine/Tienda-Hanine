@@ -75,7 +75,7 @@ function quitarCarrito(id) {
 
     const resultado = carrito.find(prod => prod.id === id)
     const indice = carrito.indexOf(resultado)
-    if (resultado.cantidad >= 1) {
+    if (resultado.cantidad > 1) {
         
     } else {
         carrito.splice(indice, 1)
