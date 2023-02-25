@@ -32,7 +32,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
     actualizarCarrito()
 })
 
-
 renderProducts()
 
 function agregarCarrito(id) {
@@ -139,22 +138,30 @@ function buscarProductos() {
     }
 }
 
+
 function guardarStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
 function renderProducts(prod) {
-    productos.forEach(prod => {
+        fetch('data.json')
+        .then( (res) => res.json())
+        .then( (data) => {
+       
+        data.forEach((prod) => {
 
-todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
-<h3>${prod.nombre}</h3> 
-<img class="imgProductos" src="${prod.imagen}">
-<h4>$${prod.precio}</h5>
-<button class="agregarCarrito" onclick=agregarCarrito(${prod.id})>Agregar al carrito</button> 
-<button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
+            todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
+            <h3>${prod.nombre}</h3> 
+            <img class="imgProductos" src="${prod.imagen}">
+            <h4>$${prod.precio}</h5>
+            <button class="agregarCarrito" onclick=agregarCarrito(${prod.id})>Agregar al carrito</button> 
+            <button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
+            
+            </div>`
+       
+        })
+        })
 
-</div>`
-});
 }
 
 
