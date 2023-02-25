@@ -143,24 +143,17 @@ function guardarStorage() {
 }
 
 function renderProducts(prod) {
-        fetch('data.json')
-        .then( (res) => res.json())
-        .then( (data) => {
-       
-        data.forEach((prod) => {
+    productos.forEach(prod => {
 
-            todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
-            <h3>${prod.nombre}</h3> 
-            <img class="imgProductos" src="${prod.imagen}">
-            <h4>$${prod.precio}</h5>
-            <button class="agregarCarrito" onclick=agregarCarrito(${prod.id})>Agregar al carrito</button> 
-            <button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
-            
-            </div>`
-       
-        })
-        })
+todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
+<h3>${prod.nombre}</h3> 
+<img class="imgProductos" src="${prod.imagen}">
+<h4>$${prod.precio}</h5>
+<button class="agregarCarrito" onclick=agregarCarrito(${prod.id})>Agregar al carrito</button> 
+<button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
 
+</div>`
+});
 }
 
 
