@@ -32,6 +32,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
     actualizarCarrito()
 })
 
+
 renderProducts()
 
 function agregarCarrito(id) {
