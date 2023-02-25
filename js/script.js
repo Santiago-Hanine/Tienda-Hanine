@@ -52,7 +52,8 @@ function agregarCarrito(id) {
         carrito.push(resultado)
     }
 
-resultado.cantidad++
+    resultado.cantidad++
+
 
 
 
@@ -74,11 +75,12 @@ function quitarCarrito(id) {
 
     const resultado = carrito.find(prod => prod.id === id)
     const indice = carrito.indexOf(resultado)
-    if (resultado.cantidad > 1) {
-        resultado.cantidad--
+    if (resultado.cantidad >= 1) {
+        
     } else {
         carrito.splice(indice, 1)
     }
+    resultado.cantidad--
     actualizarCarrito()
     
 }
@@ -115,6 +117,11 @@ const actualizarCarrito = () => {
     guardarStorage()
 }
 
+function vaciarCarrito() {
+    carrito.length = []
+    actualizarCarrito()
+
+}
 
 function buscarProductos() {
     let input = document.getElementById('barraBusqueda').value
@@ -136,9 +143,10 @@ function guardarStorage() {
 }
 
 function renderProducts(prod) {
-        fetch('TIENDA-HANINE/data.json')
-        .then((res) => res.json())
-        .then((data) => {
+        fetch('data.json')
+        .then( (res) => res.json())
+        .then( (data) => {
+       
         data.forEach((prod) => {
 
             todoProductos.innerHTML += `<div  class="cadaProducto categoriaProductos"> 
@@ -149,7 +157,7 @@ function renderProducts(prod) {
             <button class="quitarCarrito" onclick=quitarCarrito(${prod.id})><img src="./img/eliminar.png"></button>
             
             </div>`
-
+       
         })
         })
 
