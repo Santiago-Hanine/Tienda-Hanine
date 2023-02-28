@@ -1,10 +1,1 @@
-[
-{"nombre": "Sillon", "precio": 9000, "categoria": "hogar", "imagen": "./img/sillon.jpg", "id": 1},
-{"nombre": "Cama", "precio": 10000, "categoria": "hogar", "imagen": "./img/cama.jpg", "id": 2},
-{"nombre": "Auricular", "precio": 5000, "categoria": "tecnologia", "imagen": "./img/auricular.jpg", "id": 3},
-{"nombre": "Remera", "precio": 2500, "categoria": "Ropa", "imagen": "./img/remera.jpg", "id": 4},
-{"nombre": "Pantalon", "precio": 2000, "categoria": "Ropa", "imagen": "./img/pantalon.jpg", "id": 5},
-{"nombre": "Computadora", "precio": 15000, "categoria": "tecnologia", "imagen": "./img/computadora.jpeg", "id": 6},
-{"nombre": "Telefono", "precio": 13000, "categoria": "tecnologia", "imagen": "./img/telefono.jpeg", "id": 7},
-{"nombre": "Zapatillas", "precio": 8000, "categoria": "ropa", "imagen": "./img/zapatillas.jpeg", "id": 8}
-]
+[{"nombre": "Sillon", "precio": 9000, "categoria": "hogar", "imagen": "./img/sillon.jpg", "id": 1},{"nombre": "Cama", "precio": 10000, "categoria": "hogar", "imagen": "./img/cama.jpg", "id": 2},{"nombre": "Auricular", "precio": 5000, "categoria": "tecnologia", "imagen": "./img/auricular.jpg", "id": 3},{"nombre": "Remera", "precio": 2500, "categoria": "Ropa", "imagen": "./img/remera.jpg", "id": 4},{"nombre": "Pantalon", "precio": 2000, "categoria": "Ropa", "imagen": "./img/pantalon.jpg", "id": 5},{"nombre": "Computadora", "precio": 15000, "categoria": "tecnologia", "imagen": "./img/computadora.jpeg", "id": 6},{"nombre": "Telefono", "precio": 13000, "categoria": "tecnologia", "imagen": "./img/telefono.jpeg", "id": 7},{"nombre": "Zapatillas", "precio": 8000, "categoria": "ropa", "imagen": "./img/zapatillas.jpeg", "id": 8}]
